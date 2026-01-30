@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Dark cyber theme */
+  --background: 222 47% 5%;
+  --foreground: 210 40% 98%;
+  
+  --card: 222 47% 8%;
+  --card-foreground: 210 40% 98%;
+  
+  --primary: 160 100% 45%;
+  --primary-foreground: 222 47% 5%;
+  
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
+  
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  
+  --accent: 217 33% 17%;
+  --accent-foreground: 210 40% 98%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --success: 160 100% 45%;
+  --success-foreground: 222 47% 5%;
+  
+  --warning: 38 92% 50%;
+  --warning-foreground: 222 47% 5%;
+  
+  --border: 217 33% 17%;
+  --ring: 160 100% 45%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Glow effects */
+.glow-green {
+  box-shadow: 0 0 20px hsl(var(--success) / 0.4),
+              0 0 40px hsl(var(--success) / 0.2),
+              inset 0 0 20px hsl(var(--success) / 0.1);
+}
+
+.glow-red {
+  box-shadow: 0 0 20px hsl(var(--destructive) / 0.4),
+              0 0 40px hsl(var(--destructive) / 0.2),
+              inset 0 0 20px hsl(var(--destructive) / 0.1);
+}
+
+.glow-warning {
+  box-shadow: 0 0 20px hsl(var(--warning) / 0.4),
+              0 0 40px hsl(var(--warning) / 0.2),
+              inset 0 0 20px hsl(var(--warning) / 0.1);
+}
+
+/* Animated gradient background */
+.gradient-mesh {
+  background: 
+    radial-gradient(at 20% 80%, hsl(160 100% 45% / 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 20%, hsl(217 100% 60% / 0.06) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, hsl(280 100% 60% / 0.04) 0px, transparent 50%);
+}
+
+/* Terminal-style text */
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Scan line effect */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    transparent 0%,
+    hsl(var(--success) / 0.03) 50%,
+    transparent 100%
+  );
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
